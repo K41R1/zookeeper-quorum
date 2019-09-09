@@ -7,11 +7,11 @@ services:
     hostname: zoo1
     environment:
       ZOO_MY_ID: 1
-      ZOO_SERVERS: server.1=192.168.10.30:2888:3888;2181 server.2=192.168.10.31:2888:3888;2181 server.3=192.168.10.32:2888:3888;2181
+      ZOO_SERVERS:  server.1=192.168.11.2:2888:3888;2181 server.2=192.168.11.3:2888:3888;2181 server.3=192.168.11.4:2888:3888;2181
       ZOO_ADMINSERVER_ENABLED: "false"
     networks:
       zookeeper-network:
-        ipv4_address: 192.168.10.30 
+        ipv4_address: 192.168.11.2 
   zoo2:
     image: zookeeper
     ports:
@@ -19,11 +19,11 @@ services:
     hostname: zoo2
     environment:
       ZOO_MY_ID: 2
-      ZOO_SERVERS: server.1=192.168.10.30:2888:3888;2181 server.2=192.168.10.31:2888:3888;2181 server.3=192.168.10.32:2888:3888;2181
+      ZOO_SERVERS: server.1=192.168.11.2:2888:3888;2181 server.2=192.168.11.3:2888:3888;2181 server.3=192.168.11.4:2888:3888;2181
       ZOO_ADMINSERVER_ENABLED: "false"
     networks:
       zookeeper-network:
-        ipv4_address: 192.168.10.31 
+        ipv4_address: 192.168.11.3
   zoo3:
     image: zookeeper
     ports:
@@ -31,14 +31,14 @@ services:
     hostname: zoo3
     environment:
       ZOO_MY_ID: 3
-      ZOO_SERVERS: server.1=192.168.10.30:2888:3888;2181 server.2=192.168.10.31:2888:3888;2181 server.3=192.168.10.32:2888:3888;2181
+      ZOO_SERVERS: server.1=192.168.11.2:2888:3888;2181 server.2=192.168.11.3:2888:3888;2181 server.3=192.168.11.4:2888:3888;2181
       ZOO_ADMINSERVER_ENABLED: "false"
     networks:
       zookeeper-network:
-        ipv4_address: 192.168.10.32
+        ipv4_address: 192.168.11.4
 networks:
   zookeeper-network:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.10.0/24
+        - subnet: 192.168.11.0/29
